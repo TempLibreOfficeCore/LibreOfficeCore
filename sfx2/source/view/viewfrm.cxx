@@ -152,7 +152,10 @@ using ::com::sun::star::container::XIndexContainer;
 #include <string>
 
 
+#if !(defined ANDROID)
 #include <execinfo.h>  // 提供 backtrace 和 backtrace_symbols
+#endif
+
 #include <cstdlib>      // 提供 exit
 #include <unistd.h>     // 提供 STDERR_FILENO
 #include <csignal>      // 提供 signal
@@ -166,6 +169,9 @@ SFX_IMPL_SUPERCLASS_INTERFACE(SfxViewFrame,SfxShell)
 //输出调用栈
 void PrintBacktraceInfo()
 {
+#if !(defined ANDROID)
+
+
     const int max_frames = 100;
     void* buffer[max_frames];
     
@@ -187,6 +193,7 @@ void PrintBacktraceInfo()
 
     // 释放符号数组
     free(symbols);
+ #endif
 }
 //输出日志信息
 void PrintTimeStampMessage(const char* format, ...)
