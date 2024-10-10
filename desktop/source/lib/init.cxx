@@ -1411,12 +1411,7 @@ int getDocumentType (LibreOfficeKitDocument* pThis)
 //add code by yantao start 2024-10-10 office进度开发
 // 定义一个普通的全局函数
 void GlobalCallback(const char *module, const char *arg1, int progress) {
-    PrintTimeStampMessage("office-log GlobalCallback %s %s %d\n",module,arg1,progress);
-
-    if (!gImpl->mpCallback)
-        return;
-    PrintTimeStampMessage("office-log gImpl->mpCallback is not null \n");
-
+    //PrintTimeStampMessage("office-log GlobalCallback %s %s %d\n",module,arg1,progress);
 // #if !(defined ANDROID)
     if (gImpl && gImpl->mpCallback)
     {
@@ -3241,7 +3236,7 @@ static void lo_registerCallback (LibreOfficeKit* pThis,
 static void doc_stopSaveAs(LibreOfficeKitDocument* pThis)
 {
     // SolarMutexGuard aGuard; //aGuard 会导致转换停止不能执行 aGuard是全局锁
-    PrintTimeStampMessage("office-log doc_stopSaveAs 执行 \n");
+    //PrintTimeStampMessage("office-log doc_stopSaveAs 执行 \n");
     SfxApplication *pSfxApp = SfxApplication::Get();
     pSfxApp->StopDocumentSave(true);
     PrintTimeStampMessage("office-log doc_stopSaveAs done");
@@ -7262,13 +7257,10 @@ static bool bInitialized = false;
 
 static void lo_status_indicator_callback(void *data, comphelper::LibreOfficeKit::statusIndicatorCallbackType type, int percent, const char* pText)
 {
-    printf("\noffice-log lo_status_indicator_callback 01\n");
     LibLibreOffice_Impl* pLib = static_cast<LibLibreOffice_Impl*>(data);
 
     if (!pLib->mpCallback)
         return;
-    printf("\noffice-log lo_status_indicator_callback 02\n");
-
     switch (type)
     {
     case comphelper::LibreOfficeKit::statusIndicatorCallbackType::Start:

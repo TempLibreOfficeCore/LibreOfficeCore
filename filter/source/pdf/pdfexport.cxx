@@ -279,8 +279,8 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                         //add code by yantao start 2024-10-10修改 上报进度
                         SfxApplication::ReportMessage("doc load","percent",(int)((nCurrentPage*1.0/nPageCount) *100));
                         //add code by yantao start 2024-10-10修改 上报进度
-                        PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nCurrentPage %d\n",nCurrentPage);
-                        PrintTimeStampMessage("office-log PDFExport::ExportSelectione ImplExportPage 进度 %f\n",(nCurrentPage*1.0/nPageCount));
+                        //PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nCurrentPage %d\n",nCurrentPage);
+                        //PrintTimeStampMessage("office-log PDFExport::ExportSelectione ImplExportPage 进度 %f\n",(nCurrentPage*1.0/nPageCount));
 
                         bRet = true;
                     }
