@@ -960,7 +960,12 @@ typedef enum
     /**
      * Informs the LibreOfficeKit client that the color palettes have changed.
     */
-    LOK_CALLBACK_COLOR_PALETTES = 65
+    LOK_CALLBACK_COLOR_PALETTES = 65,
+
+    //add code by yantao 2024-10-10 进度开发 文档转换
+    LOK_DOCUMENT_CONVERT = 100
+    //add code by yantao 2024-10-10 office 进度开发 文档转换
+
 }
 LibreOfficeKitCallbackType;
 
@@ -1121,6 +1126,11 @@ static inline const char* lokCallbackTypeToString(int nType)
         return "LOK_CALLBACK_A11Y_TEXT_SELECTION_CHANGED";
     case LOK_CALLBACK_COLOR_PALETTES:
         return "LOK_CALLBACK_COLOR_PALETTES";
+    //add code by yantao start 2024-10-10进度开发     
+    case LOK_DOCUMENT_CONVERT:
+        return "LOK_DOCUMENT_CONVERT";
+    //add code by yantao end 2024-10-10进度开发     
+
     }
 
     assert(!"Unknown LibreOfficeKitCallbackType type.");

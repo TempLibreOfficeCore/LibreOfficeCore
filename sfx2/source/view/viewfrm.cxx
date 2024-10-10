@@ -143,9 +143,88 @@ using ::com::sun::star::container::XIndexContainer;
 #define ShellClass_SfxViewFrame
 #include <sfxslots.hxx>
 
+//add code by yantao start 2014-10-10
+#include <chrono>
+#include <iomanip>
+#include <iostream>  // 用于 std::cout
+#include <cstdarg>     // For va_list, va_start, va_end
+#include <cstdio>     // For vsnprintf
+#include <string>
+
+
+#include <execinfo.h>  // 提供 backtrace 和 backtrace_symbols
+#include <cstdlib>      // 提供 exit
+#include <unistd.h>     // 提供 STDERR_FILENO
+#include <csignal>      // 提供 signal
+//add code by yantao end 2014-10-10
+
 constexpr OUStringLiteral CHANGES_STR = u"private:resource/toolbar/changes";
 
 SFX_IMPL_SUPERCLASS_INTERFACE(SfxViewFrame,SfxShell)
+
+//add code by yantao start 2024-10-10 office 进度功能开发
+//输出调用栈
+void PrintBacktraceInfo()
+{
+    const int max_frames = 100;
+    void* buffer[max_frames];
+    
+    // 获取调用栈
+    int num_frames = backtrace(buffer, max_frames);
+
+    // 获取调用栈的符号
+    char** symbols = backtrace_symbols(buffer, num_frames);
+
+    // 打印调用栈符号
+    if (symbols != nullptr) {
+        std::cerr << "yantao-doc Backtrace (most recent call last):" << std::endl;
+        for (int i = 0; i < num_frames; ++i) {
+            std::cerr <<"yantao-doc " <<symbols[i] << std::endl;
+        }
+    } else {
+        std::cerr << "yantao-doc Failed to generate backtrace symbols." << std::endl;
+    }
+
+    // 释放符号数组
+    free(symbols);
+}
+//输出日志信息
+void PrintTimeStampMessage(const char* format, ...)
+{
+    // Create a buffer for the formatted string
+    char buffer[1024];
+
+    // Initialize variable argument list
+    va_list args;
+    va_start(args, format);
+
+    // Format the string into the buffer
+    std::vsnprintf(buffer, sizeof(buffer), format, args);
+
+    // Clean up the variable argument list
+    va_end(args);
+
+    // Output the formatted string
+
+    // 获取当前时间点
+    auto now = std::chrono::system_clock::now();
+
+    // 将时间转换为 time_t 类型，表示为日历时间
+    std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+
+    // 将 time_t 转换为本地时间
+    std::tm* localTime = std::localtime(&currentTime);
+
+    // 计算毫秒数
+    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
+
+    // 输出格式化的时间
+    std::cout<< std::put_time(localTime, "%Y-%m-%d %H:%M:%S")  // 格式化输出时间
+                << "." << std::setfill('0') << std::setw(3) << milliseconds.count()  // 输出毫秒部分
+                << " : "<< buffer <<std::endl;
+}
+//add code by yantao end 2024-10-10 office 进度功能开发
+
 
 void SfxViewFrame::InitInterface_Impl()
 {
@@ -1417,6 +1496,45 @@ bool SfxApplication::IsTipOfTheDayDue()
     const sal_Int32 nDay = std::chrono::duration_cast<std::chrono::hours>(t0).count()/24; // days since 1970-01-01
     return nDay - nLastTipOfTheDay > 0; //only once per day
 }
+
+//add code by yantao start 2024-10-10 进度开发
+//设置全局函数
+void SfxApplication::SetGlobalCallBack(GlobalOfficeCallBack callback)
+{
+    m_global_callback = callback;
+}
+
+ ///停止文件转换
+void SfxApplication::StopDocumentSave(bool isStop)
+{
+   PrintTimeStampMessage("office-log SfxApplication::StopDocumentSave %d\n",isStop);
+    m_stop_document_save.store(isStop);
+}
+
+///是否停止文件转换
+bool SfxApplication::IsStopDocumentSave()
+{
+    PrintTimeStampMessage("office-log SfxApplication::IsStopDocumentSave %d\n",m_stop_document_save.load());
+    return m_stop_document_save.load();
+}
+    //信息上报
+void SfxApplication::ReportMessage(const char* module ,const char* arg1,int value)
+{
+    PrintTimeStampMessage("office-log reportMesage module %s  args %s value %d\n",module,arg1,value);
+    SfxApplication *pSfxApp = SfxApplication::Get();
+    if (pSfxApp && pSfxApp->m_global_callback != nullptr)
+    {
+        pSfxApp->m_global_callback(module,arg1,value);
+    }
+
+    if (pSfxApp && pSfxApp->m_callback != nullptr)
+    {
+        pSfxApp->m_callback(module,arg1,value);
+    }
+}
+
+//add code by yantao end 2024-10-10 进度开发
+
 
 void SfxViewFrame::Notify( SfxBroadcaster& /*rBC*/, const SfxHint& rHint )
 {

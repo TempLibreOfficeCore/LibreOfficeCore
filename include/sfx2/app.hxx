@@ -74,6 +74,15 @@ enum class SfxToolsModule
     Basic = 4,
     LAST = Basic
 };
+//add code by yantao start 2024-10-10 office 进度功能开发
+typedef void (*GlobalOfficeCallBack)(const char *,const char*,int value);
+
+//输出时间戳日志信息
+void PrintTimeStampMessage(const char* format, ...);
+
+//输出调用栈
+void PrintBacktraceInfo();
+//add code by yantao end 2024-10-10 office 进度功能开发
 
 class SFX2_DLLPUBLIC SfxLinkItem final : public SfxPoolItem
 {
@@ -227,6 +236,36 @@ public:
 
     /** this Theme contains Images so must be deleted before DeInitVCL */
     sfx2::sidebar::Theme & GetSidebarTheme();
+
+    //add code by yantao start 2024-10-10新增全局回调函数
+    //设置全局函数
+    void SetGlobalCallBack(GlobalOfficeCallBack callback);
+    //信息回报
+    static void ReportMessage(const char* module ,const char* arg1,int value);
+
+    ///停止文件转换
+    void StopDocumentSave(bool isStop);
+
+    ///是否停止文件转换
+    bool IsStopDocumentSave();
+
+    //add code by yantao end 2024-9-15新增
+
+    // 设置 lambda 表达式作为成员
+    void SetCallback(std::function<void(const char *,const char*,int value)> cb) 
+    {
+        m_callback = cb;
+    }
+protected:
+
+    //回调函数
+    std::function<void(const char *,const char*,int value)> m_callback = nullptr;
+
+    GlobalOfficeCallBack m_global_callback = nullptr;
+    std::atomic<bool> m_stop_document_save = false;//停止文件转换
+
+    //add code by yantao end 2024-10-10新增全局回调函数
+
 };
 
 inline SfxApplication* SfxGetpApp()

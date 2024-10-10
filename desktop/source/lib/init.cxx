@@ -1108,6 +1108,7 @@ extern "C"
 
 static void doc_destroy(LibreOfficeKitDocument* pThis);
 static int doc_saveAs(LibreOfficeKitDocument* pThis, const char* pUrl, const char* pFormat, const char* pFilterOptions);
+static void doc_stopSaveAs(LibreOfficeKitDocument* pThis);
 static int doc_getDocumentType(LibreOfficeKitDocument* pThis);
 static int doc_getParts(LibreOfficeKitDocument* pThis);
 static char* doc_getPartPageRectangles(LibreOfficeKitDocument* pThis);
@@ -1407,6 +1408,20 @@ int getDocumentType (LibreOfficeKitDocument* pThis)
 
 } // anonymous namespace
 
+//add code by yantao start 2024-10-10 office进度开发
+// 定义一个普通的全局函数
+void GlobalCallback(const char *module, const char *arg1, int progress) {
+    PrintTimeStampMessage("office-log GlobalCallback %s %s %d\n",module,arg1,progress);
+
+    if (gImpl && gImpl->mpCallback)
+    {
+         std::string str = std::to_string(progress);
+         gImpl->mpCallback(LOK_DOCUMENT_CONVERT, str.c_str(),(void*)arg1);
+    }
+}
+//add code by yantao end 2024-10-10 office进度开发
+
+
 LibLODocument_Impl::LibLODocument_Impl(uno::Reference <css::lang::XComponent> xComponent, int nDocumentId)
     : mxComponent(std::move(xComponent))
     , mnDocumentId(nDocumentId)
@@ -1508,6 +1523,19 @@ LibLODocument_Impl::LibLODocument_Impl(uno::Reference <css::lang::XComponent> xC
         m_pDocumentClass->getA11yCaretPosition = doc_getA11yCaretPosition;
 
         gDocumentClass = m_pDocumentClass;
+
+
+        //add code by yantao start 2024-10-10进度开发 新增进度回调
+        SfxApplication *pSfxApp = SfxApplication::Get();
+
+        //lambda 表达式
+        /*pSfxApp->SetCallback([this](const char *module,const char*type,int value)
+        {
+            PrintTimeStampMessage("office-log LibLODocument_Impl::LibLODocument_Impl   %s ,%d\n",type,value);
+        });*/
+        pSfxApp->SetGlobalCallBack(GlobalCallback);
+        //add code by yantao end 2024-10-10进度开发 新增进度回调
+
     }
     pClass = m_pDocumentClass.get();
 
@@ -2623,8 +2651,13 @@ LibLibreOffice_Impl::LibLibreOffice_Impl()
         m_pOfficeClass->dumpState = lo_dumpState;
         m_pOfficeClass->extractRequest = lo_extractRequest;
         m_pOfficeClass->trimMemory = lo_trimMemory;
-
         gOfficeClass = m_pOfficeClass;
+
+        //add code by yantao start 2024-10-10 office进度开发
+        m_pOfficeClass->stopSaveAs = doc_stopSaveAs;
+        //add code by yantao end 2024-10-10 office进度开发
+
+
     }
 
     pClass = m_pOfficeClass.get();
@@ -2671,6 +2704,11 @@ static LibreOfficeKitDocument* lo_documentLoadWithOptions(LibreOfficeKit* pThis,
     comphelper::ProfileZone aZone("lo_documentLoadWithOptions");
 
     SolarMutexGuard aGuard;
+
+    //add code by yantao start 2024-10-10 office 进度开发 设置暂停标志
+    SfxApplication *pSfxApp = SfxApplication::Get();
+    pSfxApp->StopDocumentSave(false);
+    //add code by yantao end 2024-10-10 office 进度开发 设置暂停标志
 
     static int nDocumentIdCounter = 0;
 
@@ -3191,6 +3229,19 @@ static void lo_registerCallback (LibreOfficeKit* pThis,
     pApp->m_pCallback = pLib->mpCallback = pCallback;
     pApp->m_pCallbackData = pLib->mpCallbackData = pData;
 }
+
+//add code by yantao start 2024-10-10 文件转换进度开发 停止转换
+///停止文件转换
+static void doc_stopSaveAs(LibreOfficeKitDocument* pThis)
+{
+    // SolarMutexGuard aGuard; //aGuard 会导致转换停止不能执行 aGuard是全局锁
+    PrintTimeStampMessage("office-log doc_stopSaveAs 执行 \n");
+    SfxApplication *pSfxApp = SfxApplication::Get();
+    pSfxApp->StopDocumentSave(true);
+    PrintTimeStampMessage("office-log doc_stopSaveAs done");
+}
+//add code by yantao end 2024-10-10 文件转换进度开发 停止转换
+
 
 static int doc_saveAs(LibreOfficeKitDocument* pThis, const char* sUrl, const char* pFormat, const char* pFilterOptions)
 {

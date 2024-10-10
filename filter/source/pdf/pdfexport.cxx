@@ -63,6 +63,11 @@
 #include <com/sun/star/beans/XMaterialHolder.hpp>
 #include <com/sun/star/xml/crypto/SEInitializer.hpp>
 
+//add code by yantao start 2024-10-10 office 进度
+#include <sfx2/app.hxx>
+//add code by yantao end 2024-10-10 office 进度
+
+
 #include <memory>
 
 using namespace ::com::sun::star;
@@ -154,6 +159,18 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
     Sequence< PropertyValue >& rRenderOptions,
     sal_Int32 nPageCount )
 {
+    //add code by yantao start 2024-10-10进度开发
+    SfxApplication::ReportMessage("doc load","percent",0);
+
+    SfxApplication *pSfxApp = SfxApplication::Get();
+    if(pSfxApp->IsStopDocumentSave())
+    {
+        SfxApplication::ReportMessage("doc load","cancel",-200);
+        PrintTimeStampMessage("office-log PDFExport::ExportSelectione  停止文件转换\n");
+        return false;
+    }
+    //add code by yantao end 2024-10-10进度开发
+
     bool        bRet = false;
     try
     {
@@ -187,6 +204,7 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                 StringRangeEnumerator::Iterator aEnd  = rRangeEnum.end();
                 while ( aIter != aEnd )
                 {
+                    PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nPageCount %d\n",nPageCount);
                     const Sequence< PropertyValue > aRenderer( rRenderable->getRenderer( *aIter, rSelection, rRenderOptions ) );
                     awt::Size                   aPageSize;
 
@@ -198,6 +216,15 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                             break;
                         }
                     }
+                    //dd code by yantao start 2024-10-10文件进度开发
+                    if(pSfxApp->IsStopDocumentSave())
+                    {
+                        PrintTimeStampMessage("office-log PDFExport::ExportSelectione 终止文件转换 \n");
+                        bRet = false;
+                        break;
+                    }
+                    //dd code by yantao end 2024-10-10 文件进度开发
+
 
                     rPDFExtOutDevData.SetCurrentPageNumber( nCurrentPage );
 
@@ -248,10 +275,18 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                         }
 
                         ImplExportPage(rPDFWriter, rPDFExtOutDevData, aMtf);
+
+                        //add code by yantao start 2024-10-10修改 上报进度
+                        SfxApplication::ReportMessage("doc load","percent",(int)((nCurrentPage*1.0/nPageCount) *100));
+                        //add code by yantao start 2024-10-10修改 上报进度
+                        PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nCurrentPage %d\n",nCurrentPage);
+                        PrintTimeStampMessage("office-log PDFExport::ExportSelectione ImplExportPage 进度 %f\n",(nCurrentPage*1.0/nPageCount));
+
                         bRet = true;
                     }
                     else
                     {
+                        PrintTimeStampMessage("office-doc PDFExport::ExportSelectione empty nCurrentPage %d\n",nCurrentPage);
                         bEmptyPage = true;
                     }
 
@@ -268,11 +303,26 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                         // Calculate the page number in the PDF output, which may be smaller than the page number in
                         // case of hidden slides or a partial export.
                         ++nCurrentPage;
-                    }
+                    } 
                 }
+                //dd code by yantao start 2024-10-10文件进度开发
+                if(pSfxApp->IsStopDocumentSave())
+                {
+                    bRet = false;
+                    SfxApplication::ReportMessage("doc load","cancel",-200);
+                }
+                else
+                {
+                    SfxApplication::ReportMessage("doc load","done",100);
+                }
+                //dd code by yantao end 2024-10-10文件进度开发
             }
             else
             {
+                //add code by yantao start 2024-10-10 office 进度开发上报进度
+                SfxApplication::ReportMessage("doc load","percent",-100);
+                //add code by yantao end 2024-10-10 office 进度开发上报进度
+
                 bRet = true;                            // #i18334# nPageCount == 0,
                 rPDFWriter.NewPage( 10000, 10000 );     // creating dummy page
                 rPDFWriter.SetMapMode(MapMode(MapUnit::Map100thMM));

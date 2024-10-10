@@ -7,20 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE39ADD7215D5470000B0244 /* test.odt in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADD6215D5470000B0244 /* test.odt */; };
-		BE39ADEF215D5AA4000B0244 /* icudt65l.dat in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE0215D5AA3000B0244 /* icudt65l.dat */; };
-		BE39ADF0215D5AA4000B0244 /* fundamentalrc in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE1215D5AA3000B0244 /* fundamentalrc */; };
-		BE39ADF1215D5AA4000B0244 /* services in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE2215D5AA3000B0244 /* services */; };
-		BE39ADF2215D5AA4000B0244 /* share in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE3215D5AA3000B0244 /* share */; };
-		BE39ADF3215D5AA4000B0244 /* oovbaapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE4215D5AA3000B0244 /* oovbaapi.rdb */; };
-		BE39ADF4215D5AA4000B0244 /* program in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE5215D5AA3000B0244 /* program */; };
-		BE39ADF5215D5AA4000B0244 /* config in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE6215D5AA3000B0244 /* config */; };
-		BE39ADF6215D5AA4000B0244 /* services.rdb in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE7215D5AA3000B0244 /* services.rdb */; };
-		BE39ADF8215D5AA4000B0244 /* offapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADE9215D5AA3000B0244 /* offapi.rdb */; };
-		BE39ADF9215D5AA4000B0244 /* udkapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADEA215D5AA3000B0244 /* udkapi.rdb */; };
-		BE39ADFA215D5AA4000B0244 /* rc in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADEB215D5AA3000B0244 /* rc */; };
-		BE39ADFC215D5AA4000B0244 /* unorc in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADED215D5AA4000B0244 /* unorc */; };
-		BE39ADFD215D5AA4000B0244 /* welcome.odt in Resources */ = {isa = PBXBuildFile; fileRef = BE39ADEE215D5AA4000B0244 /* welcome.odt */; };
+		B98EA5312CB674FC00E846A4 /* share in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5252CB674FB00E846A4 /* share */; };
+		B98EA5322CB674FC00E846A4 /* unorc in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5262CB674FC00E846A4 /* unorc */; };
+		B98EA5332CB674FC00E846A4 /* offapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5272CB674FC00E846A4 /* offapi.rdb */; };
+		B98EA5342CB674FC00E846A4 /* program in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5282CB674FC00E846A4 /* program */; };
+		B98EA5352CB674FC00E846A4 /* oovbaapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5292CB674FC00E846A4 /* oovbaapi.rdb */; };
+		B98EA5362CB674FC00E846A4 /* welcome.odt in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52A2CB674FC00E846A4 /* welcome.odt */; };
+		B98EA5372CB674FC00E846A4 /* services in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52B2CB674FC00E846A4 /* services */; };
+		B98EA5382CB674FC00E846A4 /* udkapi.rdb in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52C2CB674FC00E846A4 /* udkapi.rdb */; };
+		B98EA5392CB674FC00E846A4 /* icudt73l.dat in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52D2CB674FC00E846A4 /* icudt73l.dat */; };
+		B98EA53A2CB674FC00E846A4 /* fundamentalrc in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52E2CB674FC00E846A4 /* fundamentalrc */; };
+		B98EA53B2CB674FC00E846A4 /* rc in Resources */ = {isa = PBXBuildFile; fileRef = B98EA52F2CB674FC00E846A4 /* rc */; };
+		B98EA53C2CB674FC00E846A4 /* services.rdb in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5302CB674FC00E846A4 /* services.rdb */; };
+		B98EA53F2CB675C800E846A4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA53D2CB675C800E846A4 /* libsqlite3.0.tbd */; };
+		B98EA5402CB675C800E846A4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA53E2CB675C800E846A4 /* libsqlite3.tbd */; };
+		B98EA5432CB675D300E846A4 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA5412CB675D300E846A4 /* libicucore.tbd */; };
+		B98EA5442CB675D300E846A4 /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA5422CB675D300E846A4 /* libicucore.A.tbd */; };
+		B98EA5462CB675DF00E846A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA5452CB675DF00E846A4 /* CoreGraphics.framework */; };
+		B98EA5482CB675EC00E846A4 /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EA5472CB675EC00E846A4 /* libiconv.2.tbd */; };
+		B98EA54A2CB6786000E846A4 /* ICU.dat in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5492CB6786000E846A4 /* ICU.dat */; };
+		B98EA54D2CB678DE00E846A4 /* test.odt in Resources */ = {isa = PBXBuildFile; fileRef = B98EA54C2CB678DE00E846A4 /* test.odt */; };
+		B98EA5582CB7A33900E846A4 /* video_to_docx.docx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5512CB7A33800E846A4 /* video_to_docx.docx */; };
+		B98EA5592CB7A33900E846A4 /* test2.docx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5522CB7A33800E846A4 /* test2.docx */; };
+		B98EA55A2CB7A33900E846A4 /* testPPT.pptx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5532CB7A33800E846A4 /* testPPT.pptx */; };
+		B98EA55B2CB7A33900E846A4 /* testExcel.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5542CB7A33800E846A4 /* testExcel.xlsx */; };
+		B98EA55C2CB7A33900E846A4 /* XSpirit2.docx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5552CB7A33900E846A4 /* XSpirit2.docx */; };
+		B98EA55D2CB7A33900E846A4 /* test_large.pptx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5562CB7A33900E846A4 /* test_large.pptx */; };
+		B98EA55E2CB7A33900E846A4 /* testdoc.docx in Resources */ = {isa = PBXBuildFile; fileRef = B98EA5572CB7A33900E846A4 /* testdoc.docx */; };
 		BE535616215D189A0068B3B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE535615215D189A0068B3B7 /* AppDelegate.m */; };
 		BE535619215D189A0068B3B7 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BE535618215D189A0068B3B7 /* ViewController.mm */; };
 		BE53561C215D189A0068B3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE53561A215D189A0068B3B7 /* Main.storyboard */; };
@@ -33,20 +46,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE39ADD6215D5470000B0244 /* test.odt */ = {isa = PBXFileReference; lastKnownFileType = file; name = test.odt; path = ../../../../odk/examples/cpp/DocumentLoader/test.odt; sourceTree = "<group>"; };
-		BE39ADE0215D5AA3000B0244 /* icudt65l.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = icudt65l.dat; path = ../../../../workdir/CustomTarget/ios/resources/icudt65l.dat; sourceTree = "<group>"; };
-		BE39ADE1215D5AA3000B0244 /* fundamentalrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fundamentalrc; path = ../../../../workdir/CustomTarget/ios/resources/fundamentalrc; sourceTree = "<group>"; };
-		BE39ADE2215D5AA3000B0244 /* services */ = {isa = PBXFileReference; lastKnownFileType = folder; name = services; path = ../../../../workdir/CustomTarget/ios/resources/services; sourceTree = "<group>"; };
-		BE39ADE3215D5AA3000B0244 /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; name = share; path = ../../../../workdir/CustomTarget/ios/resources/share; sourceTree = "<group>"; };
-		BE39ADE4215D5AA3000B0244 /* oovbaapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = oovbaapi.rdb; path = ../../../../workdir/CustomTarget/ios/resources/oovbaapi.rdb; sourceTree = "<group>"; };
-		BE39ADE5215D5AA3000B0244 /* program */ = {isa = PBXFileReference; lastKnownFileType = folder; name = program; path = ../../../../workdir/CustomTarget/ios/resources/program; sourceTree = "<group>"; };
-		BE39ADE6215D5AA3000B0244 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = config; path = ../../../../workdir/CustomTarget/ios/resources/config; sourceTree = "<group>"; };
-		BE39ADE7215D5AA3000B0244 /* services.rdb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = services.rdb; path = ../../../../workdir/CustomTarget/ios/resources/services.rdb; sourceTree = "<group>"; };
-		BE39ADE9215D5AA3000B0244 /* offapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = offapi.rdb; path = ../../../../workdir/CustomTarget/ios/resources/offapi.rdb; sourceTree = "<group>"; };
-		BE39ADEA215D5AA3000B0244 /* udkapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = udkapi.rdb; path = ../../../../workdir/CustomTarget/ios/resources/udkapi.rdb; sourceTree = "<group>"; };
-		BE39ADEB215D5AA3000B0244 /* rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rc; path = ../../../../workdir/CustomTarget/ios/resources/rc; sourceTree = "<group>"; };
-		BE39ADED215D5AA4000B0244 /* unorc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unorc; path = ../../../../workdir/CustomTarget/ios/resources/unorc; sourceTree = "<group>"; };
-		BE39ADEE215D5AA4000B0244 /* welcome.odt */ = {isa = PBXFileReference; lastKnownFileType = file; name = welcome.odt; path = ../../../../workdir/CustomTarget/ios/resources/welcome.odt; sourceTree = "<group>"; };
+		B98EA5252CB674FB00E846A4 /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
+		B98EA5262CB674FC00E846A4 /* unorc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unorc; sourceTree = "<group>"; };
+		B98EA5272CB674FC00E846A4 /* offapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = offapi.rdb; sourceTree = "<group>"; };
+		B98EA5282CB674FC00E846A4 /* program */ = {isa = PBXFileReference; lastKnownFileType = folder; path = program; sourceTree = "<group>"; };
+		B98EA5292CB674FC00E846A4 /* oovbaapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = oovbaapi.rdb; sourceTree = "<group>"; };
+		B98EA52A2CB674FC00E846A4 /* welcome.odt */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcome.odt; sourceTree = "<group>"; };
+		B98EA52B2CB674FC00E846A4 /* services */ = {isa = PBXFileReference; lastKnownFileType = folder; path = services; sourceTree = "<group>"; };
+		B98EA52C2CB674FC00E846A4 /* udkapi.rdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = udkapi.rdb; sourceTree = "<group>"; };
+		B98EA52D2CB674FC00E846A4 /* icudt73l.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = icudt73l.dat; sourceTree = "<group>"; };
+		B98EA52E2CB674FC00E846A4 /* fundamentalrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fundamentalrc; sourceTree = "<group>"; };
+		B98EA52F2CB674FC00E846A4 /* rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rc; sourceTree = "<group>"; };
+		B98EA5302CB674FC00E846A4 /* services.rdb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = services.rdb; sourceTree = "<group>"; };
+		B98EA53D2CB675C800E846A4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B98EA53E2CB675C800E846A4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B98EA5412CB675D300E846A4 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		B98EA5422CB675D300E846A4 /* libicucore.A.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.A.tbd; path = usr/lib/libicucore.A.tbd; sourceTree = SDKROOT; };
+		B98EA5452CB675DF00E846A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B98EA5472CB675EC00E846A4 /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		B98EA5492CB6786000E846A4 /* ICU.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = ICU.dat; sourceTree = "<group>"; };
+		B98EA54C2CB678DE00E846A4 /* test.odt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.odt; sourceTree = "<group>"; };
+		B98EA5512CB7A33800E846A4 /* video_to_docx.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_to_docx.docx; sourceTree = "<group>"; };
+		B98EA5522CB7A33800E846A4 /* test2.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.docx; sourceTree = "<group>"; };
+		B98EA5532CB7A33800E846A4 /* testPPT.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = testPPT.pptx; sourceTree = "<group>"; };
+		B98EA5542CB7A33800E846A4 /* testExcel.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = testExcel.xlsx; sourceTree = "<group>"; };
+		B98EA5552CB7A33900E846A4 /* XSpirit2.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = XSpirit2.docx; sourceTree = "<group>"; };
+		B98EA5562CB7A33900E846A4 /* test_large.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_large.pptx; sourceTree = "<group>"; };
+		B98EA5572CB7A33900E846A4 /* testdoc.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdoc.docx; sourceTree = "<group>"; };
 		BE535611215D189A0068B3B7 /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE535614215D189A0068B3B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE535615215D189A0068B3B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -196,6 +222,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B98EA5482CB675EC00E846A4 /* libiconv.2.tbd in Frameworks */,
+				B98EA5462CB675DF00E846A4 /* CoreGraphics.framework in Frameworks */,
+				B98EA5432CB675D300E846A4 /* libicucore.tbd in Frameworks */,
+				B98EA5442CB675D300E846A4 /* libicucore.A.tbd in Frameworks */,
+				B98EA53F2CB675C800E846A4 /* libsqlite3.0.tbd in Frameworks */,
+				B98EA5402CB675C800E846A4 /* libsqlite3.tbd in Frameworks */,
 				BE93D41D216B4ECA007A39F4 /* MobileCoreServices.framework in Frameworks */,
 				BEA1A700215D1D9F00A9323B /* libiconv.tbd in Frameworks */,
 				BEA1A6FE215D1D9700A9323B /* libz.tbd in Frameworks */,
@@ -205,25 +237,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BE39ADD5215D5448000B0244 /* Resources */ = {
+		B98E90A02CB674D800E846A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BE39ADE6215D5AA3000B0244 /* config */,
-				BE39ADE1215D5AA3000B0244 /* fundamentalrc */,
-				BE39ADE0215D5AA3000B0244 /* icudt65l.dat */,
-				BE39ADE9215D5AA3000B0244 /* offapi.rdb */,
-				BE39ADE4215D5AA3000B0244 /* oovbaapi.rdb */,
-				BE39ADE5215D5AA3000B0244 /* program */,
-				BE39ADEB215D5AA3000B0244 /* rc */,
-				BE39ADE2215D5AA3000B0244 /* services */,
-				BE39ADE7215D5AA3000B0244 /* services.rdb */,
-				BE39ADE3215D5AA3000B0244 /* share */,
-				BE39ADEA215D5AA3000B0244 /* udkapi.rdb */,
-				BE39ADED215D5AA4000B0244 /* unorc */,
-				BE39ADEE215D5AA4000B0244 /* welcome.odt */,
-				BE39ADD6215D5470000B0244 /* test.odt */,
+				B98EA54C2CB678DE00E846A4 /* test.odt */,
+				B98EA5492CB6786000E846A4 /* ICU.dat */,
+				B98EA52E2CB674FC00E846A4 /* fundamentalrc */,
+				B98EA52D2CB674FC00E846A4 /* icudt73l.dat */,
+				B98EA5272CB674FC00E846A4 /* offapi.rdb */,
+				B98EA5292CB674FC00E846A4 /* oovbaapi.rdb */,
+				B98EA5282CB674FC00E846A4 /* program */,
+				B98EA52F2CB674FC00E846A4 /* rc */,
+				B98EA52B2CB674FC00E846A4 /* services */,
+				B98EA5302CB674FC00E846A4 /* services.rdb */,
+				B98EA5252CB674FB00E846A4 /* share */,
+				B98EA52C2CB674FC00E846A4 /* udkapi.rdb */,
+				B98EA5262CB674FC00E846A4 /* unorc */,
+				B98EA52A2CB674FC00E846A4 /* welcome.odt */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B98EA5502CB7A31000E846A4 /* Doc */ = {
+			isa = PBXGroup;
+			children = (
+				B98EA5562CB7A33900E846A4 /* test_large.pptx */,
+				B98EA5522CB7A33800E846A4 /* test2.docx */,
+				B98EA5572CB7A33900E846A4 /* testdoc.docx */,
+				B98EA5542CB7A33800E846A4 /* testExcel.xlsx */,
+				B98EA5532CB7A33800E846A4 /* testPPT.pptx */,
+				B98EA5512CB7A33800E846A4 /* video_to_docx.docx */,
+				B98EA5552CB7A33900E846A4 /* XSpirit2.docx */,
+			);
+			path = Doc;
 			sourceTree = "<group>";
 		};
 		BE535608215D189A0068B3B7 = {
@@ -247,7 +293,8 @@
 		BE535613215D189A0068B3B7 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				BE39ADD5215D5448000B0244 /* Resources */,
+				B98EA5502CB7A31000E846A4 /* Doc */,
+				B98E90A02CB674D800E846A4 /* Resources */,
 				BE535614215D189A0068B3B7 /* AppDelegate.h */,
 				BE535615215D189A0068B3B7 /* AppDelegate.m */,
 				BE535617215D189A0068B3B7 /* ViewController.h */,
@@ -264,6 +311,12 @@
 		BEA1A6FC215D1D9700A9323B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B98EA5472CB675EC00E846A4 /* libiconv.2.tbd */,
+				B98EA5452CB675DF00E846A4 /* CoreGraphics.framework */,
+				B98EA5422CB675D300E846A4 /* libicucore.A.tbd */,
+				B98EA5412CB675D300E846A4 /* libicucore.tbd */,
+				B98EA53D2CB675C800E846A4 /* libsqlite3.0.tbd */,
+				B98EA53E2CB675C800E846A4 /* libsqlite3.tbd */,
 				BE93D41B216B378E007A39F4 /* MobileCoreServices.framework */,
 				BEA1A6FF215D1D9F00A9323B /* libiconv.tbd */,
 				BEA1A6FD215D1D9700A9323B /* libz.tbd */,
@@ -536,23 +589,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE39ADEF215D5AA4000B0244 /* icudt65l.dat in Resources */,
-				BE39ADF6215D5AA4000B0244 /* services.rdb in Resources */,
-				BE39ADF3215D5AA4000B0244 /* oovbaapi.rdb in Resources */,
-				BE39ADF8215D5AA4000B0244 /* offapi.rdb in Resources */,
+				B98EA5312CB674FC00E846A4 /* share in Resources */,
+				B98EA5332CB674FC00E846A4 /* offapi.rdb in Resources */,
+				B98EA55D2CB7A33900E846A4 /* test_large.pptx in Resources */,
 				BE535621215D189E0068B3B7 /* LaunchScreen.storyboard in Resources */,
-				BE39ADF4215D5AA4000B0244 /* program in Resources */,
-				BE39ADF5215D5AA4000B0244 /* config in Resources */,
-				BE39ADD7215D5470000B0244 /* test.odt in Resources */,
-				BE39ADFA215D5AA4000B0244 /* rc in Resources */,
-				BE39ADF2215D5AA4000B0244 /* share in Resources */,
-				BE39ADFD215D5AA4000B0244 /* welcome.odt in Resources */,
+				B98EA5362CB674FC00E846A4 /* welcome.odt in Resources */,
+				B98EA55B2CB7A33900E846A4 /* testExcel.xlsx in Resources */,
+				B98EA5372CB674FC00E846A4 /* services in Resources */,
+				B98EA5352CB674FC00E846A4 /* oovbaapi.rdb in Resources */,
+				B98EA5592CB7A33900E846A4 /* test2.docx in Resources */,
+				B98EA5392CB674FC00E846A4 /* icudt73l.dat in Resources */,
+				B98EA5382CB674FC00E846A4 /* udkapi.rdb in Resources */,
 				BE53561E215D189E0068B3B7 /* Assets.xcassets in Resources */,
-				BE39ADF1215D5AA4000B0244 /* services in Resources */,
-				BE39ADFC215D5AA4000B0244 /* unorc in Resources */,
+				B98EA55A2CB7A33900E846A4 /* testPPT.pptx in Resources */,
+				B98EA54D2CB678DE00E846A4 /* test.odt in Resources */,
+				B98EA55E2CB7A33900E846A4 /* testdoc.docx in Resources */,
+				B98EA5342CB674FC00E846A4 /* program in Resources */,
+				B98EA53C2CB674FC00E846A4 /* services.rdb in Resources */,
 				BE53561C215D189A0068B3B7 /* Main.storyboard in Resources */,
-				BE39ADF9215D5AA4000B0244 /* udkapi.rdb in Resources */,
-				BE39ADF0215D5AA4000B0244 /* fundamentalrc in Resources */,
+				B98EA53B2CB674FC00E846A4 /* rc in Resources */,
+				B98EA5582CB7A33900E846A4 /* video_to_docx.docx in Resources */,
+				B98EA53A2CB674FC00E846A4 /* fundamentalrc in Resources */,
+				B98EA5322CB674FC00E846A4 /* unorc in Resources */,
+				B98EA55C2CB7A33900E846A4 /* XSpirit2.docx in Resources */,
+				B98EA54A2CB6786000E846A4 /* ICU.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,8 +657,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				LO_CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				LO_CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -643,6 +702,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LO_CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				LO_CLANG_CXX_LIBRARY = "libc++";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -656,8 +717,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				LO_CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				LO_CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -696,6 +756,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LO_CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				LO_CLANG_CXX_LIBRARY = "libc++";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -707,9 +769,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				LO_CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J4FQ687VJK;
+				DEVELOPMENT_TEAM = 764BT75H7R;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -733,11 +794,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LO_CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../../workdir/CustomTarget/ios/ios-all-static-libs.list",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.libreoffice.ios.UnitTest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.libreoffice.ios.UnitTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -747,9 +809,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				LO_CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J4FQ687VJK;
+				DEVELOPMENT_TEAM = 764BT75H7R;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IOS=IOS",
@@ -771,11 +832,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LO_CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../../workdir/CustomTarget/ios/ios-all-static-libs.list",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.libreoffice.ios.UnitTest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.libreoffice.ios.UnitTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

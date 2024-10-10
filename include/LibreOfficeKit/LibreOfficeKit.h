@@ -60,6 +60,12 @@ struct _LibreOfficeKitClass
     LibreOfficeKitDocument* (*documentLoadWithOptions) (LibreOfficeKit* pThis,
                                                         const char* pURL,
                                                         const char* pOptions);
+                                                        
+    //add code by yantao start 2024-10-10  文件进度开发停止转换
+    /// @brief 停止文件保存
+    void (*stopSaveAs)(LibreOfficeKitDocument* pThis);
+    //add code by yantao start 2024-10-10  文件进度开发停止转换
+
     /// @since LibreOffice 5.2
     void (*freeError) (char* pFree);
 
