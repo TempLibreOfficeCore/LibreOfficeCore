@@ -198,7 +198,6 @@ void PrintBacktraceInfo()
 //输出日志信息
 void PrintTimeStampMessage(const char* format, ...)
 {
-#if !(defined ANDROID)
     // Create a buffer for the formatted string
     char buffer[1024];
 
@@ -230,7 +229,6 @@ void PrintTimeStampMessage(const char* format, ...)
     std::cout<< std::put_time(localTime, "%Y-%m-%d %H:%M:%S")  // 格式化输出时间
                 << "." << std::setfill('0') << std::setw(3) << milliseconds.count()  // 输出毫秒部分
                 << " : "<< buffer <<std::endl;
-#endif
 }
 //add code by yantao end 2024-10-10 office 进度功能开发
 

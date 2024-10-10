@@ -1413,11 +1413,13 @@ int getDocumentType (LibreOfficeKitDocument* pThis)
 void GlobalCallback(const char *module, const char *arg1, int progress) {
     PrintTimeStampMessage("office-log GlobalCallback %s %s %d\n",module,arg1,progress);
 
+#if !(defined ANDROID)
     if (gImpl && gImpl->mpCallback)
     {
          std::string str = std::to_string(progress);
          gImpl->mpCallback(LOK_DOCUMENT_CONVERT, str.c_str(),(void*)arg1);
     }
+#endif
 }
 //add code by yantao end 2024-10-10 office进度开发
 
