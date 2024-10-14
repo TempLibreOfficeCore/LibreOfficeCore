@@ -204,7 +204,7 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                 StringRangeEnumerator::Iterator aEnd  = rRangeEnum.end();
                 while ( aIter != aEnd )
                 {
-                    PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nPageCount %d\n",nPageCount);
+                    //PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nPageCount %d\n",nPageCount);
                     const Sequence< PropertyValue > aRenderer( rRenderable->getRenderer( *aIter, rSelection, rRenderOptions ) );
                     awt::Size                   aPageSize;
 

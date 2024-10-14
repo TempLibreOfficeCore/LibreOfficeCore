@@ -1521,13 +1521,13 @@ void SfxApplication::StopDocumentSave(bool isStop)
 ///是否停止文件转换
 bool SfxApplication::IsStopDocumentSave()
 {
-    PrintTimeStampMessage("office-log SfxApplication::IsStopDocumentSave %d\n",m_stop_document_save.load());
+    //PrintTimeStampMessage("office-log SfxApplication::IsStopDocumentSave %d\n",m_stop_document_save.load());
     return m_stop_document_save.load();
 }
     //信息上报
 void SfxApplication::ReportMessage(const char* module ,const char* arg1,int value)
 {
-    PrintTimeStampMessage("office-log reportMesage module %s  args %s value %d\n",module,arg1,value);
+    //PrintTimeStampMessage("office-log reportMesage module %s  args %s value %d\n",module,arg1,value);
     SfxApplication *pSfxApp = SfxApplication::Get();
     if (pSfxApp && pSfxApp->m_global_callback != nullptr)
     {
