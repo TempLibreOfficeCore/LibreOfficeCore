@@ -257,6 +257,7 @@ hb_blob_t* CoreTextFontFace::GetHbTable(hb_tag_t nTag) const
 
 const std::vector<hb_variation_t>& CoreTextFontFace::GetVariations(const LogicalFontInstance&) const
 {
+    //printf("\nyantao-font CoreTextFontFace::GetVariations\n");
     CTFontRef pFont = CTFontCreateWithFontDescriptor(mxFontDescriptor, 0.0, nullptr);
 
     if (!mxVariations)
@@ -296,6 +297,11 @@ const std::vector<hb_variation_t>& CoreTextFontFace::GetVariations(const Logical
             CFRelease(pAxes);
         }
     }
+    //add code by yantao start 2024-11-5修改释放  pFont否则导致内存泄漏  
+    if(pFont){
+       CFRelease(pFont);
+    }        
+    //add code by yantao end 2024-11-5修改释放  pFont否则导致内存泄漏          
 
     return *mxVariations;
 }
