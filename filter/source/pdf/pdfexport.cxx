@@ -202,6 +202,9 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                 sal_Int32 nCurrentPage(0);
                 StringRangeEnumerator::Iterator aIter = rRangeEnum.begin();
                 StringRangeEnumerator::Iterator aEnd  = rRangeEnum.end();
+                //add code by yantao start 2024-11-6优化进度
+                int curProgress = 0;
+                //add code by yantao start 2024-11-6优化进度
                 while ( aIter != aEnd )
                 {
                     //PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nPageCount %d\n",nPageCount);
@@ -277,7 +280,12 @@ bool PDFExport::ExportSelection( vcl::PDFWriter& rPDFWriter,
                         ImplExportPage(rPDFWriter, rPDFExtOutDevData, aMtf);
 
                         //add code by yantao start 2024-10-10修改 上报进度
-                        SfxApplication::ReportMessage("doc load","percent",(int)((nCurrentPage*1.0/nPageCount) *100));
+                        int tmp = (int)((nCurrentPage*1.0/nPageCount) *100);
+                        if(curProgress != tmp)
+                        {    
+                             SfxApplication::ReportMessage("doc load","percent",curProgress);
+                             curProgress = tmp;
+                        }
                         //add code by yantao start 2024-10-10修改 上报进度
                         //PrintTimeStampMessage("office-doc PDFExport::ExportSelectione nCurrentPage %d\n",nCurrentPage);
                         //PrintTimeStampMessage("office-log PDFExport::ExportSelectione ImplExportPage 进度 %f\n",(nCurrentPage*1.0/nPageCount));
