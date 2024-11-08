@@ -128,6 +128,12 @@
 #include <string_view>
 #include <utility>
 
+
+//add code by yantao start 2024-11-8 加载时终止转换
+#include <sfx2/app.hxx>
+//add code by yantao end 2024-11-8 加载时终止转换
+
+
 using namespace com::sun::star;
 using ::com::sun::star::uno::Any;
 using ::com::sun::star::beans::XPropertySet;
@@ -3863,6 +3869,16 @@ bool XclImpDffConverter::ProcessShGrContainer( SvStream& rDffStrm, const DffReco
     bool isBreak(false);
     while (!isBreak && rDffStrm.good() && rDffStrm.Tell() < nEndPos)
     {
+         //add code by yantao start 2024-11-7 加载时终止转换
+        SfxApplication *pSfxApp = SfxApplication::Get();
+        if(pSfxApp->IsStopDocumentSave())
+        {
+            SfxApplication::ReportMessage("doc load","cancel",-200);
+            PrintTimeStampMessage("office-log XclImpDffConverter::ProcessShGrContainer  停止文件加载\n");
+            isBreak = true;
+            break;
+        }
+        //add code by yantao start 2024-11-7 加载时终止转换
         DffRecordHeader aHeader;
         ReadDffRecordHeader( rDffStrm, aHeader );
         switch( aHeader.nRecType )

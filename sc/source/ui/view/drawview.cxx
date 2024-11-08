@@ -64,6 +64,10 @@
 
 #include <sc.hrc>
 
+//add code by yantao start 2024-11-8 新增excel 转换stop 
+#include <sfx2/app.hxx>
+//add code by yantao end 2024-11-8 新增excel 转换stop 
+
 using namespace com::sun::star;
 
 #define SC_HANDLESIZE_BIG       9
@@ -342,6 +346,16 @@ void ScDrawView::RecalcScale()
         const size_t nCount = pPage->GetObjCount();
         for ( size_t i = 0; i < nCount; ++i )
         {
+            //add code by yantao start 2024-11-8 加载时终止转换
+            SfxApplication *pSfxApp = SfxApplication::Get();
+            if(pSfxApp->IsStopDocumentSave())
+            {
+                SfxApplication::ReportMessage("doc load","cancel",-200);
+                PrintTimeStampMessage("office-log ScDrawView::RecalcScale  停止文件j加载\n");
+                return;
+            }
+            //add code by yantao start 2024-11-8 加载时终止转换
+
             SdrObject* pObj = pPage->GetObj( i );
             // Align objects to nearest grid position
             SyncForGrid( pObj );
@@ -917,12 +931,31 @@ void ScDrawView::MarkDropObj( SdrObject* pObj )
 // object doesn't have a cell anchor we synthesise a temporary anchor.
 void ScDrawView::SyncForGrid( SdrObject* pObj )
 {
+    //add code by yantao start 2024-11-8 加载时终止转换
+    SfxApplication *pSfxApp = SfxApplication::Get();
+    if(pSfxApp->IsStopDocumentSave())
+    {
+        SfxApplication::ReportMessage("doc load","cancel",-200);
+        PrintTimeStampMessage("office-log ScDrawView::SyncForGrid  停止文件j加载\n");
+        return ;
+    }
+    //add code by yantao start 2024-11-8 加载时终止转换
     // process members of a group shape separately
     if ( auto pObjGroup = dynamic_cast<const SdrObjGroup*>( pObj) )
     {
         SdrObjList *pLst = pObjGroup->GetSubList();
-        for ( size_t i = 0, nCount = pLst->GetObjCount(); i < nCount; ++i )
-            SyncForGrid( pLst->GetObj( i ) );
+        for ( size_t i = 0, nCount = pLst->GetObjCount(); i < nCount; ++i ){
+            //add code by yantao start 2024-11-8 加载时终止转换
+            SfxApplication *pSfxApp = SfxApplication::Get();
+            if(pSfxApp->IsStopDocumentSave())
+            {
+                SfxApplication::ReportMessage("doc load","cancel",-200);
+                PrintTimeStampMessage("office-log ScDrawView::SyncForGrid  停止文件j加载\n");
+                return ;
+            }
+            //add code by yantao start 2024-11-8 加载时终止转换
+             SyncForGrid( pLst->GetObj( i ) );
+        }
     }
 
     ScSplitPos eWhich = pViewData->GetActivePart();
